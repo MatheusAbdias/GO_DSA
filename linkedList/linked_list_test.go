@@ -18,7 +18,7 @@ func TestCreateLinkedList(t *testing.T) {
 
 func TestAppendInLinkedList(t *testing.T) {
 	l := NewLinkedList()
-	l.Append(10)
+	l.append(10)
 
 	if l.length == 0 {
 		t.Error("Expected length grater than zero when append element")
@@ -31,9 +31,9 @@ func TestAppendInLinkedList(t *testing.T) {
 func TestPopLinkedList(t *testing.T) {
 	l := NewLinkedList()
 	value := 10
-	l.Append(value)
+	l.append(value)
 
-	popedValue, err := l.Pop()
+	popedValue, err := l.pop()
 
 	if err != nil {
 		t.Error("Not expected error when pop value in not blank linked list")
@@ -47,19 +47,19 @@ func TestPopLinkedList(t *testing.T) {
 func TestLinkedList(t *testing.T) {
 	list := NewLinkedList()
 
-	if list.Length() != 0 {
-		t.Errorf("Expected length 0, but got %d", list.Length())
+	if list.len() != 0 {
+		t.Errorf("Expected length 0, but got %d", list.len())
 	}
 
-	list.Append(10)
-	list.Append(20)
-	list.Append(30)
+	list.append(10)
+	list.append(20)
+	list.append(30)
 
-	if list.Length() != 3 {
-		t.Errorf("Expected length 3, but got %d", list.Length())
+	if list.len() != 3 {
+		t.Errorf("Expected length 3, but got %d", list.len())
 	}
 
-	value, err := list.Pop()
+	value, err := list.pop()
 	if err != nil {
 		t.Errorf("Unexpected error: %v", err)
 	}
@@ -67,11 +67,11 @@ func TestLinkedList(t *testing.T) {
 		t.Errorf("Expected value 30, but got %d", value)
 	}
 
-	if list.Length() != 2 {
-		t.Errorf("Expected length 2, but got %d", list.Length())
+	if list.len() != 2 {
+		t.Errorf("Expected length 2, but got %d", list.len())
 	}
 
-	value, err = list.Pop()
+	value, err = list.pop()
 	if err != nil {
 		t.Errorf("Unexpected error: %v", err)
 	}
@@ -79,11 +79,11 @@ func TestLinkedList(t *testing.T) {
 		t.Errorf("Expected value 20, but got %d", value)
 	}
 
-	if list.Length() != 1 {
-		t.Errorf("Expected length 1, but got %d", list.Length())
+	if list.len() != 1 {
+		t.Errorf("Expected length 1, but got %d", list.len())
 	}
 
-	value, err = list.Pop()
+	value, err = list.pop()
 	if err != nil {
 		t.Errorf("Unexpected error: %v", err)
 	}
@@ -91,11 +91,11 @@ func TestLinkedList(t *testing.T) {
 		t.Errorf("Expected value 10, but got %d", value)
 	}
 
-	if list.Length() != 0 {
-		t.Errorf("Expected length 0, but got %d", list.Length())
+	if list.len() != 0 {
+		t.Errorf("Expected length 0, but got %d", list.len())
 	}
 
-	_, err = list.Pop()
+	_, err = list.pop()
 	if err == nil {
 		t.Errorf("Expected error for popping from an empty list, but got no error")
 	}
@@ -103,11 +103,11 @@ func TestLinkedList(t *testing.T) {
 func TestLinkedListPopIndex(t *testing.T) {
 	list := NewLinkedList()
 
-	list.Append(10)
-	list.Append(20)
-	list.Append(30)
-	list.Append(40)
-	list.Append(50)
+	list.append(10)
+	list.append(20)
+	list.append(30)
+	list.append(40)
+	list.append(50)
 
 	tests := []struct {
 		index        int
@@ -135,27 +135,32 @@ func TestLinkedListPopIndex(t *testing.T) {
 	}
 }
 
-func compareList(list *LinkedList, expected []int) bool {
-	if list.Length() != len(expected) {
-		return false
+func TestLinkedListInsertIndex(t *testing.T) {
+	list := NewLinkedList()
+
+	tests := []struct {
+		index        int
+		value        int
+		expectedList []int
+		expectedErr  bool
+	}{
+		{0, 10, []int{10}, false},
+		{0, 20, []int{20, 10}, false},
+		{1, 30, []int{20, 30, 10}, false},
+		{3, 40, []int{20, 30, 10, 40}, false},
+		{5, 50, []int{20, 30, 10, 40}, true},
+		{4, 50, []int{20, 30, 10, 40, 50}, false},
 	}
 
-	node := list.next
-	for _, val := range expected {
-		if node.value != val {
-			return false
+	for _, test := range tests {
+		err := list.insertIndex(test.index, test.value)
+
+		if (err != nil) != test.expectedErr {
+			t.Errorf("Error mismatch. Expected: %v, Got: %v", test.expectedErr, err != nil)
 		}
-		node = node.next
-	}
-	return true
-}
 
-func listToArray(list *LinkedList) []int {
-	arr := []int{}
-	node := list.next
-	for node != nil {
-		arr = append(arr, node.value)
-		node = node.next
+		if !test.expectedErr && !compareList(list, test.expectedList) {
+			t.Errorf("List mismatch for index %d. Expected: %v, Got: %v", test.index, test.expectedList, listToArray(list))
+		}
 	}
-	return arr
 }

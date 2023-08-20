@@ -16,7 +16,7 @@ func NewLinkedList() *LinkedList {
 	return &LinkedList{}
 }
 
-func (l *LinkedList) Length() int {
+func (l *LinkedList) len() int {
 	return l.length
 }
 
@@ -25,8 +25,11 @@ func NewNode(value int) *Node {
 		value: value,
 	}
 }
+func (l *LinkedList) isEmpty() bool {
+	return l.length == 0
+}
 
-func (l *LinkedList) Append(value int) {
+func (l *LinkedList) append(value int) {
 	newNode := NewNode(value)
 	if l.length == 0 {
 		l.next = newNode
@@ -41,7 +44,7 @@ func (l *LinkedList) Append(value int) {
 	l.length++
 }
 
-func (l *LinkedList) Pop() (int, error) {
+func (l *LinkedList) pop() (int, error) {
 
 	if l.length == 0 {
 		return 0, fmt.Errorf("Cannot pop in empty linked list")
@@ -64,7 +67,7 @@ func (l *LinkedList) Pop() (int, error) {
 }
 
 func (l *LinkedList) popIndex(index int) (int, error) {
-	if index >= l.length || l.length <= 0 {
+	if index >= l.length || l.isEmpty() {
 		return 0, fmt.Errorf("Invalid index, out off range")
 	}
 
@@ -92,4 +95,36 @@ func (l *LinkedList) popIndex(index int) (int, error) {
 	}
 	l.length--
 	return value, nil
+}
+
+func (l *LinkedList) insertIndex(index int, value int) error {
+	if index > l.length {
+		return fmt.Errorf("Invalid index to insert")
+	}
+
+	newNode := NewNode(value)
+
+	if index == 0 {
+		if l.length == 0 {
+			l.next = newNode
+		} else {
+			previusNode := l.next
+			l.next = newNode
+			newNode.next = previusNode
+		}
+	} else {
+		node := l.next
+		for i := 0; i < index-1; i++ {
+			node = node.next
+		}
+
+		previusNode := node.next
+		node.next = newNode
+		newNode.next = previusNode
+
+	}
+
+	l.length++
+
+	return nil
 }

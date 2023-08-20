@@ -10,9 +10,9 @@ Translations:
 * [Português](README_ptBR.md)
 
 
-Welcome to the GO_DSA repository! This repository was created to practice the implementation of algorithms and data structures in Go (Golang). Here, you will find implementations of the following data structures:
+Welcome to the GO_DSA repository! This repository was created to practice the implementation of algorithms and data structures in Go (Golang). Here, you will find examples of the following data structures:
 
-- Structures:
+- Data Structures:
   - `[X]` Array
   - `[X]` Linked List
   - `[X]` Stack
@@ -23,7 +23,7 @@ Welcome to the GO_DSA repository! This repository was created to practice the im
 
 Each directory corresponding to these structures will contain clear and commented examples designed to help you understand how these structures work and how to effectively implement them in Go.
 
-## Estrutura do Repositório
+## Repository Structure
 
 ```
 GO_DSA/

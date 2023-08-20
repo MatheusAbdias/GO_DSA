@@ -1,6 +1,6 @@
 # GO_DSA: Practice of Algorithms and Data Structures in Go
 
-<div style= "text-align: center" >
+<div align="center">
     <img src="https://go.dev/blog/go-brand/Go-Logo/PNG/Go-Logo_LightBlue.png" alt="Go Logo" width="200" height="200">
 </div>
 

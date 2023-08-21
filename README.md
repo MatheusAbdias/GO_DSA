@@ -9,14 +9,13 @@ Translations:
 * [English](README.md)
 * [Português](README_ptBR.md)
 
-
 Welcome to the GO_DSA repository! This repository was created to practice the implementation of algorithms and data structures in Go (Golang). Here, you will find examples of the following data structures:
 
 - Data Structures:
   - `[X]` Array
   - `[X]` Linked List
   - `[X]` Stack
-  - `[ ]` Queue
+  - `[X]` Queue
   - `[ ]` Binary Search Tree (BST)
   - `[ ]` AVL Tree and Red-Black Tree
   - `[ ]` B Tree

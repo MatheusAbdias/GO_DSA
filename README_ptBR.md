@@ -5,6 +5,7 @@
 </div>
 
 Traduções:
+
 * [Inglês](README.md)
 * [Português](README_ptBR.md)
 
@@ -14,7 +15,7 @@ Bem-vindo ao repositório GO_DSA! Este repositório foi criado com o objetivo de
   - `[X]` Array
   - `[X]` Linked List
   - `[X]` Stack
-  - `[ ]` Queue
+  - `[X]` Queue
   - `[ ]` Binary Search Tree (BST)
   - `[ ]` AVL Tree and Red-Black Tree
   - `[ ]` B Tree

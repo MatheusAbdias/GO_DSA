@@ -16,7 +16,7 @@ Bem-vindo ao repositório GO_DSA! Este repositório foi criado com o objetivo de
   - `[X]` Linked List
   - `[X]` Stack
   - `[X]` Queue
-  - `[ ]` Binary Search Tree (BST)
+  - `[X]` Binary Search Tree (BST)
   - `[ ]` AVL Tree and Red-Black Tree
   - `[ ]` B Tree
 
@@ -25,3 +25,12 @@ Cada diretório correspondente a essas estruturas conterá exemplos claros e com
 ## Estrutura do Repositório
 
 O repositório está organizado da seguinte maneira:
+
+```
+GO_DSA/
+├── array/
+├── linked_list/
+├── stack/
+├── bst/
+└── README.md
+```

@@ -16,7 +16,7 @@ Welcome to the GO_DSA repository! This repository was created to practice the im
   - `[X]` Linked List
   - `[X]` Stack
   - `[X]` Queue
-  - `[ ]` Binary Search Tree (BST)
+  - `[x]` Binary Search Tree (BST)
   - `[ ]` AVL Tree and Red-Black Tree
   - `[ ]` B Tree
 
